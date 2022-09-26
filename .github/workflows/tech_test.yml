@@ -38,5 +38,5 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: elsamoh/tech_gen:v2.0.0
+          tags: elsamoh/techtrends:latest
 

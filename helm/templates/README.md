@@ -1,1 +1,0 @@
-Helm application templates

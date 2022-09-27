@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: udaapp
-  name: 
+  name: techtrends
   namespace: {{ .Values.namespace.name }} 
 spec:
   ports:

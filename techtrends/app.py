@@ -28,6 +28,9 @@ app.config['SECRET_KEY'] = 'your secret key'
 # Define the main route of the web application 
 @app.route('/')
 def index():
+    global dbcon_count
+    dbcon_count = dbcon_count + 1
+
     connection = get_db_connection()
     posts = connection.execute('SELECT * FROM posts').fetchall()
     connection.close()
@@ -40,6 +43,7 @@ def index():
 def post(post_id):
     global dbcon_count
     dbcon_count = dbcon_count + 1
+
     post = get_post(post_id)
     if post is None:
       logging.error('Post with id {} does not exist'.format(post_id))
@@ -51,6 +55,9 @@ def post(post_id):
 # Define the About Us page
 @app.route('/about')
 def about():
+    global dbcon_count
+    dbcon_count = dbcon_count + 1
+
     logging.info('"About Us" page retrieved')
     return render_template('about.html')
 
@@ -59,6 +66,7 @@ def about():
 def create():
     global dbcon_count
     dbcon_count = dbcon_count + 1
+
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
@@ -80,6 +88,9 @@ def create():
 
 @app.route('/healthz')
 def healthcheck():
+    global dbcon_count
+    dbcon_count = dbcon_count + 1
+
     response = app.response_class(
             response=json.dumps({"result":"OK - healthy"}),
             status=200,
@@ -91,6 +102,9 @@ def healthcheck():
 
 @app.route('/metrics')
 def metrics():
+    global dbcon_count
+    dbcon_count = dbcon_count + 1
+
     connection = get_db_connection()
     post_count = connection.execute('SELECT count(*) FROM posts').fetchone()[0]
 
@@ -101,8 +115,6 @@ def metrics():
     )
     logging.info('Metrics retrieved')
     return response
-
-
 
 # start the application on port 3111
 if __name__ == "__main__":

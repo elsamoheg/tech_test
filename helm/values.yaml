@@ -2,7 +2,7 @@ namespace:
   name: sandbox
  
 service:
-  port: 44111
+  port: 4111
   targetPort: 3111
   protocol: TCP
   type: ClusterIP

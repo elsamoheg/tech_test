@@ -9,7 +9,7 @@ spec:
   ports:
   - port: {{ .Values.service.port }} 
     protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.targetPort }}
   selector:
     app: udaapp
   type: {{ .Values.service.type }} 

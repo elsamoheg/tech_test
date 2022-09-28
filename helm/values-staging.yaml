@@ -2,7 +2,7 @@ namespace:
   name: staging 
 
 service:
-  port: 5111
+  port: 9111
 
 replicaCount: 3
 
